@@ -1,0 +1,19 @@
+:root {
+  font-family: Arial, "Noto Sans KR", sans-serif;
+  color: #222;
+  background: #f3f5f8;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button,
+input,
+select {
+  font-family: inherit;
+}

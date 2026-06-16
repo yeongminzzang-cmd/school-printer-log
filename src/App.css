@@ -1,0 +1,2845 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f3f5f8;
+  font-family: Arial, "Noto Sans KR", sans-serif;
+  color: #222;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.card {
+  width: 100%;
+  max-width: 440px;
+  background: #fff;
+  padding: 28px;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+
+.subText {
+  margin: 0 0 24px;
+  color: #666;
+  font-size: 14px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 700;
+}
+
+input,
+select,
+button {
+  height: 46px;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+input,
+select {
+  border: 1px solid #d6dbe2;
+  padding: 0 14px;
+  background: #fff;
+}
+
+button {
+  border: none;
+  padding: 0 16px;
+  cursor: pointer;
+  font-weight: 700;
+  background: #222;
+  color: #fff;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+.row input {
+  flex: 1;
+}
+
+.row button {
+  width: 130px;
+  font-size: 14px;
+}
+
+.monthlyBox {
+  padding: 14px;
+  background: #f0f6ff;
+  border: 1px solid #cfe2ff;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.submitButton {
+  margin-top: 6px;
+  width: 100%;
+  background: #1f5eff;
+}
+
+.message {
+  margin: 18px 0 0;
+  padding: 12px;
+  background: #f7f7f7;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.adminPage {
+  min-height: 100vh;
+  padding: 32px;
+  background: #f3f5f8;
+}
+
+.adminCard {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 28px;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+th,
+td {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 12px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+th {
+  background: #f8fafc;
+  font-weight: 700;
+}
+
+.adminControls {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr auto auto;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.adminControls input,
+.adminControls select,
+.adminControls button {
+  height: 42px;
+}
+
+.summaryBox {
+  margin-bottom: 14px;
+  padding: 12px 14px;
+  background: #f0f6ff;
+  border: 1px solid #cfe2ff;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+@media (max-width: 760px) {
+  .adminControls {
+    grid-template-columns: 1fr;
+  }
+}
+
+.deleteButton {
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 8px;
+  background: #dc2626;
+  color: #fff;
+  font-size: 13px;
+}
+
+.editInput {
+  width: 100px;
+  height: 34px;
+  padding: 0 8px;
+  font-size: 14px;
+}
+
+.editInput.small {
+  width: 70px;
+}
+
+.editSelect {
+  height: 34px;
+  min-width: 100px;
+  font-size: 14px;
+}
+
+.editPurposeBox {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 6px;
+}
+
+.editButton,
+.saveButton,
+.cancelButton {
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.editButton {
+  background: #2563eb;
+}
+
+.saveButton {
+  background: #16a34a;
+}
+
+.cancelButton {
+  background: #6b7280;
+}
+
+.csvButton {
+  background: #0f766e;
+}
+
+.adminTopBar {
+  width: min(1320px, calc(100% - 32px));
+  margin: 0 auto 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #666;
+}
+
+.adminTopBar button {
+  border: none;
+  border-radius: 999px;
+  padding: 6px 12px;
+  background: #222;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* 관리자 상단 로그아웃 */
+.adminTopBar button {
+  background: #d93025;
+  color: white;
+}
+
+.adminTopBar button:hover {
+  background: #b3261e;
+}
+
+/* 관리자 검색/버튼 영역 반응형 정리 */
+.adminControls {
+  display: grid;
+  grid-template-columns: minmax(180px, 2fr) minmax(150px, 1.2fr) minmax(150px, 1.2fr) auto auto;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.adminControls input,
+.adminControls select,
+.adminControls button {
+  width: 100%;
+  min-width: 0;
+  height: 52px;
+  box-sizing: border-box;
+}
+
+.adminControls button {
+  white-space: nowrap;
+}
+
+/* 태블릿 정도 화면 */
+@media (max-width: 900px) {
+  .adminControls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* 휴대폰 화면 */
+@media (max-width: 560px) {
+  .adminControls {
+    grid-template-columns: 1fr;
+  }
+}
+
+.limitBox {
+  margin-top: 12px;
+  padding: 14px 16px;
+  border: 1px solid #f2b8b5;
+  border-radius: 12px;
+  background: #fff5f5;
+  color: #8b1a1a;
+}
+
+.limitBox strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.limitList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.limitItem {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #ffe1e1;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.limitSettingBox {
+  margin-top: 14px;
+  margin-bottom: 12px;
+  padding: 14px 16px;
+  border: 1px solid #d6e0f5;
+  border-radius: 12px;
+  background: #f8fbff;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.limitSettingBox label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.limitSettingBox input {
+  width: 120px;
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid #d0d7e2;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.limitSettingBox button {
+  height: 42px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 10px;
+  background: #222;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.resetCodeButton {
+  background: #6b7280;
+  color: white;
+}
+
+.resetCodeButton:hover {
+  background: #4b5563;
+}
+
+.insightCards {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.insightCard {
+  padding: 16px;
+  border: 1px solid #d8e0ef;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+}
+
+.insightCard span {
+  display: block;
+  margin-bottom: 8px;
+  color: #666;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.insightCard strong {
+  display: block;
+  color: #111827;
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+@media (max-width: 900px) {
+  .insightCards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.adminTabs {
+  margin: 16px 0 18px;
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.adminTabs button {
+  padding: 10px 16px;
+  border: none;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: #6b7280;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.adminTabs button.active {
+  color: #111827;
+  border-bottom-color: #111827;
+}
+
+.adminTabs button:hover {
+  color: #111827;
+}
+
+.rankingBox {
+  margin-top: 14px;
+  padding: 16px;
+  border: 1px solid #d8e0ef;
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+.rankingBox > strong {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.rankingList {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.rankingList li {
+  padding: 8px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.rankingList li:last-child {
+  border-bottom: none;
+}
+
+.rankingList li span {
+  font-weight: 600;
+}
+
+.rankingList li strong {
+  white-space: nowrap;
+}
+
+.classUsageList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.classUsageItem {
+  display: grid;
+  grid-template-columns: 50px 1fr 70px;
+  align-items: center;
+  gap: 12px;
+}
+
+.classUsageItem span {
+  font-weight: 700;
+}
+
+.classUsageItem strong {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.classUsageBarWrap {
+  height: 12px;
+  border-radius: 999px;
+  background: #eef2f7;
+  overflow: hidden;
+}
+
+.classUsageBar {
+  height: 100%;
+  border-radius: 999px;
+  background: #2563eb;
+}
+
+.monthlyLineChart {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.monthlyLineChart svg {
+  width: 100%;
+  min-width: 520px;
+  height: auto;
+  display: block;
+}
+
+.chartAxis {
+  stroke: #cbd5e1;
+  stroke-width: 1;
+}
+
+.chartLine {
+  stroke: #2563eb;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chartDot {
+  fill: #2563eb;
+  stroke: white;
+  stroke-width: 2;
+}
+
+.chartValueLabel {
+  fill: #111827;
+  font-size: 13px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+.chartMonthLabel {
+  fill: #6b7280;
+  font-size: 12px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+.chartMaxLabel {
+  fill: #6b7280;
+  font-size: 12px;
+  font-weight: 700;
+  text-anchor: end;
+}
+
+.insightFilterInfo {
+  margin-bottom: 14px;
+  padding: 14px 16px;
+  border: 1px solid #d8e0ef;
+  border-radius: 14px;
+  background: #f8fbff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.insightFilterInfo strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 15px;
+}
+
+.insightFilterInfo p {
+  margin: 0;
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.insightFilterInfo button {
+  height: 40px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 10px;
+  background: #111827;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.warningBox {
+  margin-top: 14px;
+  padding: 16px;
+  border: 1px solid #facc15;
+  border-radius: 14px;
+  background: #fffbeb;
+}
+
+.warningBox > strong {
+  display: block;
+  margin-bottom: 12px;
+  color: #92400e;
+  font-size: 16px;
+}
+
+.warningBox p {
+  margin: 0;
+  color: #78350f;
+}
+
+.warningList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.warningItem {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #fef3c7;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.warningItem span {
+  font-weight: 700;
+  color: #78350f;
+}
+
+.warningItem strong {
+  color: #92400e;
+}
+
+.rankingStudentButton {
+  border: none;
+  background: transparent;
+  padding: 0;
+  color: #111827;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: left;
+}
+
+.rankingStudentButton:hover {
+  text-decoration: underline;
+}
+
+.limitItem {
+  border: none;
+  cursor: pointer;
+}
+
+.limitItem:hover {
+  filter: brightness(0.96);
+}
+
+.warningItem {
+  width: 100%;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #fef3c7;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  cursor: pointer;
+  text-align: left;
+}
+
+.warningItem:hover {
+  filter: brightness(0.96);
+}
+
+.studentManageHeader {
+  margin-bottom: 14px;
+  padding: 14px 16px;
+  border: 1px solid #d8e0ef;
+  border-radius: 14px;
+  background: #f8fbff;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.studentManageHeader label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.studentManageHeader input {
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid #d0d7e2;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.studentManageHeader button {
+  height: 42px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 10px;
+  background: #111827;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.statusBadge.active {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.statusBadge.inactive {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.classTabs {
+  margin: 12px 0 14px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.classTabs button {
+  padding: 9px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  background: white;
+  color: #4b5563;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.classTabs button.active {
+  background: #111827;
+  color: white;
+  border-color: #111827;
+}
+
+.classTabs button:hover {
+  border-color: #111827;
+}
+
+.studentSummaryCards {
+  margin: 14px 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.studentSummaryCard {
+  padding: 14px 16px;
+  border: 1px solid #d8e0ef;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+.studentSummaryCard span {
+  display: block;
+  margin-bottom: 6px;
+  color: #6b7280;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.studentSummaryCard strong {
+  color: #111827;
+  font-size: 20px;
+}
+
+@media (max-width: 900px) {
+  .studentSummaryCards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .studentSummaryCards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.studentManageHeader select {
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid #d0d7e2;
+  border-radius: 10px;
+  font-size: 15px;
+  background: white;
+}
+
+.studentLinkButton {
+  border: none;
+  background: transparent;
+  padding: 0;
+  color: #111827;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.studentLinkButton:hover {
+  text-decoration: underline;
+}
+
+.periodQuickButtons {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.periodQuickButtons button {
+  height: 52px;
+  padding: 0 12px;
+  border: 1px solid #d0d7e2;
+  border-radius: 10px;
+  background: white;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.periodQuickButtons button:hover {
+  border-color: #111827;
+}
+
+.logSummaryCards {
+  margin: 14px 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.logSummaryCard {
+  padding: 14px 16px;
+  border: 1px solid #d8e0ef;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+.logSummaryCard span {
+  display: block;
+  margin-bottom: 6px;
+  color: #6b7280;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.logSummaryCard strong {
+  color: #111827;
+  font-size: 18px;
+}
+
+@media (max-width: 900px) {
+  .logSummaryCards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .logSummaryCards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.limitBlockedBox {
+  margin: 18px 0;
+  padding: 22px;
+  border: 2px solid #dc2626;
+  border-radius: 18px;
+  background: #fef2f2;
+  color: #7f1d1d;
+}
+
+.limitBlockedBox h2 {
+  margin: 0 0 10px;
+  font-size: 24px;
+  color: #991b1b;
+}
+
+.limitBlockedBox p {
+  margin: 0 0 16px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.limitBlockedInfo {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.limitBlockedInfo div {
+  padding: 14px;
+  border-radius: 14px;
+  background: white;
+  border: 1px solid #fecaca;
+}
+
+.limitBlockedInfo span {
+  display: block;
+  margin-bottom: 6px;
+  color: #991b1b;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.limitBlockedInfo strong {
+  color: #111827;
+  font-size: 22px;
+}
+
+.limitBlockedGuide {
+  margin-top: 14px !important;
+  color: #991b1b;
+}
+
+@media (max-width: 760px) {
+  .limitBlockedInfo {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .limitBlockedInfo {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==============================
+   User Page Design
+============================== */
+
+.userPage {
+  min-height: 100vh;
+  padding: 28px 16px;
+  background:
+    radial-gradient(circle at top, rgba(37, 99, 235, 0.08), transparent 34%),
+    #f3f5f8;
+}
+
+.userCard {
+  max-width: 480px;
+  padding: 30px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+}
+
+.userHeader {
+  margin-bottom: 24px;
+}
+
+.userEyebrow {
+  margin: 0 0 8px;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.userHeader h1 {
+  margin: 0 0 10px;
+  color: #111827;
+  font-size: 28px;
+  line-height: 1.25;
+  letter-spacing: -0.04em;
+}
+
+.userHeader .subText {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.userForm {
+  gap: 18px;
+}
+
+.formSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fieldText {
+  color: #111827;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.userForm label {
+  gap: 8px;
+}
+
+.userForm input,
+.userForm select {
+  height: 50px;
+  border: 1px solid #d6dbe2;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #111827;
+  font-size: 16px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.userForm input:focus,
+.userForm select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+.checkRow {
+  gap: 10px;
+}
+
+.checkRow input {
+  min-width: 0;
+}
+
+.checkButton {
+  width: 132px;
+  height: 50px;
+  border-radius: 12px;
+  background: #111827;
+  color: #ffffff;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.checkButton:hover {
+  background: #1f2937;
+}
+
+.submitButton {
+  height: 52px;
+  margin-top: 4px;
+  border-radius: 14px;
+  background: #2563eb;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.submitButton:hover {
+  background: #1d4ed8;
+}
+
+.monthlyBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 16px;
+  border: 1px solid #bfdbfe;
+  border-radius: 14px;
+  background: #eff6ff;
+  color: #1e3a8a;
+}
+
+.monthlyBox span {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.monthlyBox strong {
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.message {
+  margin-top: 18px;
+  padding: 13px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #f9fafb;
+  color: #374151;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* 월 제한 초과 박스 */
+.limitBlockedBox {
+  margin: 0 0 22px;
+  padding: 20px;
+  border: 1px solid #fecaca;
+  border-left: 5px solid #dc2626;
+  border-radius: 16px;
+  background: #fef2f2;
+  color: #7f1d1d;
+}
+
+.limitBlockedTitle {
+  margin-bottom: 10px;
+}
+
+.limitBlockedTitle span {
+  display: inline-block;
+  margin-bottom: 6px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: #fee2e2;
+  color: #991b1b;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.limitBlockedBox h2 {
+  margin: 0;
+  color: #991b1b;
+  font-size: 22px;
+  line-height: 1.3;
+}
+
+.limitBlockedBox p {
+  margin: 0 0 14px;
+  color: #7f1d1d;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.limitBlockedInfo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.limitBlockedInfo div {
+  padding: 13px;
+  border: 1px solid #fecaca;
+  border-radius: 13px;
+  background: #ffffff;
+}
+
+.limitBlockedInfo span {
+  display: block;
+  margin-bottom: 5px;
+  color: #991b1b;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.limitBlockedInfo strong {
+  color: #111827;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.limitBlockedGuide {
+  margin: 12px 0 0 !important;
+  color: #991b1b !important;
+}
+
+/* 모바일 */
+@media (max-width: 520px) {
+  .userPage {
+    align-items: flex-start;
+    padding: 18px 12px;
+  }
+
+  .userCard {
+    padding: 22px 18px;
+    border-radius: 16px;
+  }
+
+  .userHeader h1 {
+    font-size: 24px;
+  }
+
+  .checkRow {
+    flex-direction: column;
+  }
+
+  .checkButton {
+    width: 100%;
+  }
+
+  .monthlyBox {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .limitBlockedInfo {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==============================
+   Admin Page Shell Design
+============================== */
+
+.adminShell {
+  min-height: 100vh;
+  padding: 28px 20px 40px;
+  background:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.07), transparent 32%),
+    #f3f5f8;
+}
+
+.adminMainCard {
+  width: min(1320px, 100%);
+  max-width: 1320px;
+  padding: 30px;
+  border: 1px solid #e5e7eb;
+  border-radius: 22px;
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.08);
+}
+
+.adminHeader {
+  margin-bottom: 18px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.adminEyebrow {
+  margin: 0 0 8px;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.adminHeader h1 {
+  margin: 0;
+  color: #111827;
+  font-size: 30px;
+  line-height: 1.25;
+  letter-spacing: -0.04em;
+}
+
+.adminSubtitle {
+  margin: 8px 0 0;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.adminContent {
+  margin-top: 18px;
+}
+
+/* 관리자 상단 바 */
+.adminTopBar {
+  width: min(1320px, 100%);
+  margin: 0 auto 12px;
+  padding: 0 2px;
+}
+
+.adminTopBar span {
+  color: #4b5563;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.adminTopBar button {
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: #dc2626;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.adminTopBar button:hover {
+  background: #b91c1c;
+}
+
+/* 관리자 탭 */
+.adminTabs {
+  margin: 0 0 18px;
+  padding: 6px;
+  display: inline-flex;
+  gap: 4px;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  background: #f9fafb;
+}
+
+.adminTabs button {
+  height: 40px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.adminTabs button.active {
+  background: #111827;
+  color: #ffffff;
+  border-bottom-color: transparent;
+  box-shadow: 0 6px 16px rgba(17, 24, 39, 0.16);
+}
+
+.adminTabs button:hover {
+  color: #111827;
+}
+
+.adminTabs button.active:hover {
+  color: #ffffff;
+}
+
+/* 관리자 검색/필터 영역 */
+.adminControls,
+.studentManageHeader,
+.limitSettingBox,
+.insightFilterInfo {
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: #f8fafc;
+}
+
+.adminControls {
+  padding: 14px;
+  margin: 18px 0;
+  grid-template-columns:
+    minmax(180px, 1.8fr)
+    minmax(150px, 1.1fr)
+    minmax(160px, 1.1fr)
+    auto
+    auto;
+}
+
+.adminControls input,
+.adminControls select,
+.studentManageHeader input,
+.studentManageHeader select,
+.limitSettingBox input {
+  height: 46px;
+  border: 1px solid #d6dbe2;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #111827;
+  font-size: 15px;
+}
+
+.adminControls input:focus,
+.adminControls select:focus,
+.studentManageHeader input:focus,
+.studentManageHeader select:focus,
+.limitSettingBox input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.11);
+}
+
+.adminControls button,
+.studentManageHeader button,
+.limitSettingBox button,
+.insightFilterInfo button {
+  height: 46px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+/* 기간 버튼 */
+.periodQuickButtons {
+  gap: 7px;
+}
+
+.periodQuickButtons button {
+  height: 46px;
+  border: 1px solid #d6dbe2;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #374151;
+}
+
+.periodQuickButtons button:hover {
+  border-color: #111827;
+  background: #f9fafb;
+}
+
+/* 요약 카드 공통 */
+.logSummaryCards,
+.studentSummaryCards,
+.insightCards {
+  margin: 16px 0;
+  gap: 12px;
+}
+
+.logSummaryCard,
+.studentSummaryCard,
+.insightCard {
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.05);
+}
+
+.logSummaryCard span,
+.studentSummaryCard span,
+.insightCard span {
+  color: #6b7280;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.logSummaryCard strong,
+.studentSummaryCard strong,
+.insightCard strong {
+  color: #111827;
+  font-weight: 900;
+}
+
+/* 표 */
+.tableWrap {
+  margin-top: 16px;
+  overflow-x: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.tableWrap table {
+  margin-top: 0;
+}
+
+table {
+  font-size: 14px;
+}
+
+th {
+  background: #f8fafc;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+td {
+  color: #111827;
+}
+
+th,
+td {
+  padding: 13px 14px;
+  border-bottom: 1px solid #eef2f7;
+}
+
+tbody tr:hover {
+  background: #f9fafb;
+}
+
+/* 수정/삭제 버튼 */
+.actionButtons {
+  gap: 7px;
+}
+
+.editButton,
+.saveButton,
+.cancelButton,
+.deleteButton,
+.resetCodeButton {
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.editButton {
+  background: #2563eb;
+}
+
+.saveButton {
+  background: #16a34a;
+}
+
+.cancelButton,
+.resetCodeButton {
+  background: #6b7280;
+}
+
+.deleteButton {
+  background: #dc2626;
+}
+
+.csvButton {
+  background: #0f766e;
+}
+
+/* 학생 관리 탭 */
+.classTabs {
+  margin: 14px 0 16px;
+  gap: 8px;
+}
+
+.classTabs button {
+  height: 38px;
+  padding: 0 15px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.classTabs button.active {
+  background: #111827;
+  border-color: #111827;
+  color: #ffffff;
+}
+
+/* 경고/초과 박스 */
+.warningBox,
+.rankingBox {
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.05);
+}
+
+.warningBox {
+  border-color: #fde68a;
+  background: #fffbeb;
+}
+
+.warningItem {
+  border-radius: 12px;
+}
+
+/* 모바일 */
+@media (max-width: 900px) {
+  .adminShell {
+    padding: 20px 14px 32px;
+  }
+
+  .adminMainCard {
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
+
+  .adminHeader h1 {
+    font-size: 25px;
+  }
+
+  .adminTabs {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-radius: 16px;
+  }
+
+  .adminTabs button {
+    width: 100%;
+    padding: 0 8px;
+    border-radius: 12px;
+  }
+
+  .adminControls {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .periodQuickButtons {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .periodQuickButtons button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .adminShell {
+    padding: 14px 10px 28px;
+  }
+
+  .adminMainCard {
+    padding: 18px 14px;
+  }
+
+  .adminTopBar {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+
+  .adminHeader {
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+  }
+
+  .adminHeader h1 {
+    font-size: 23px;
+  }
+
+  .adminSubtitle {
+    font-size: 13px;
+  }
+
+  .adminTabs {
+    grid-template-columns: 1fr;
+    border-radius: 14px;
+  }
+
+  .adminTabs button {
+    justify-content: center;
+  }
+
+  .adminControls {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+
+  .periodQuickButtons {
+    grid-template-columns: 1fr;
+  }
+
+  .logSummaryCards,
+  .studentSummaryCards,
+  .insightCards {
+    grid-template-columns: 1fr;
+  }
+
+  th,
+  td {
+    padding: 11px 12px;
+    font-size: 13px;
+  }
+}
+
+/* ==============================
+   Admin Logs Panel
+============================== */
+
+.adminLogsPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.panelSectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.panelSectionHeader h2 {
+  margin: 0;
+  color: #111827;
+  font-size: 22px;
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+}
+
+.panelSectionHeader p {
+  margin: 6px 0 0;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.adminMetricCards {
+  margin: 0;
+}
+
+.adminMetricCard {
+  min-height: 92px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.adminMetricCard strong {
+  word-break: keep-all;
+  line-height: 1.35;
+}
+
+.adminPanelMessage {
+  margin: 0;
+  padding: 14px 16px;
+  border: 1px solid #dbeafe;
+  border-radius: 14px;
+  background: #eff6ff;
+  color: #1e3a8a;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.adminTableSection {
+  margin-top: 2px;
+}
+
+.tableSectionHeader {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.tableSectionHeader h3 {
+  margin: 0;
+  color: #111827;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.tableSectionHeader span {
+  color: #6b7280;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+/* 관리자 요약 카드 모바일 보정 */
+@media (max-width: 900px) {
+  .panelSectionHeader {
+    flex-direction: column;
+  }
+
+  .adminMetricCard {
+    min-height: 84px;
+  }
+}
+
+@media (max-width: 560px) {
+  .panelSectionHeader h2 {
+    font-size: 20px;
+  }
+
+  .panelSectionHeader p {
+    font-size: 13px;
+  }
+
+  .tableSectionHeader {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .adminMetricCard {
+    min-height: auto;
+  }
+}
+
+/* ==============================
+   Admin Log Controls
+============================== */
+
+.logControls {
+  display: grid;
+  grid-template-columns:
+    minmax(160px, 1.2fr)
+    minmax(210px, 1.4fr)
+    minmax(220px, 1.2fr)
+    minmax(150px, 1fr)
+    auto;
+  gap: 12px;
+  align-items: end;
+  padding: 16px;
+}
+
+.controlField {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.controlField span {
+  color: #374151;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.controlField input,
+.controlField select {
+  width: 100%;
+}
+
+.quickField {
+  min-width: 220px;
+}
+
+.controlActions {
+  display: flex;
+  gap: 8px;
+  align-items: end;
+}
+
+.controlActions button {
+  height: 46px;
+  padding: 0 15px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.resetButton {
+  background: #6b7280;
+  color: #ffffff;
+}
+
+.resetButton:hover {
+  background: #4b5563;
+}
+
+.csvButton {
+  background: #0f766e;
+  color: #ffffff;
+}
+
+.csvButton:hover {
+  background: #0d5f59;
+}
+
+/* 빠른 기간 버튼 */
+.periodQuickButtons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.periodQuickButtons button {
+  width: 100%;
+  height: 46px;
+  padding: 0 10px;
+  border: 1px solid #d6dbe2;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.periodQuickButtons button:hover {
+  border-color: #111827;
+  background: #f9fafb;
+}
+
+/* 태블릿 */
+@media (max-width: 1100px) {
+  .logControls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .quickField {
+    min-width: 0;
+  }
+
+  .controlActions {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 640px) {
+  .logControls {
+    grid-template-columns: 1fr;
+    padding: 13px;
+  }
+
+  .controlActions {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .controlActions button {
+    width: 100%;
+  }
+
+  .periodQuickButtons {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==============================
+   Admin Logs Table
+============================== */
+
+.adminLogsTableWrap {
+  margin-top: 0;
+  border-radius: 16px;
+}
+
+.adminLogsTable {
+  min-width: 880px;
+}
+
+.adminLogsTable th {
+  height: 48px;
+  background: #f8fafc;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.adminLogsTable td {
+  height: 54px;
+  vertical-align: middle;
+}
+
+.adminLogsTable tbody tr {
+  transition: background 0.15s ease;
+}
+
+.adminLogsTable tbody tr:hover {
+  background: #f9fafb;
+}
+
+.adminLogsTable .editingRow {
+  background: #eff6ff;
+}
+
+.adminLogsTable .editingRow:hover {
+  background: #eff6ff;
+}
+
+.dateCell {
+  color: #4b5563;
+  font-size: 13px;
+}
+
+.studentIdCell strong {
+  color: #111827;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.nameCell {
+  color: #111827;
+  font-weight: 700;
+}
+
+.pagesCell strong {
+  color: #1d4ed8;
+  font-weight: 900;
+}
+
+.purposeCell {
+  min-width: 150px;
+}
+
+.purposeBadge {
+  display: inline-flex;
+  align-items: center;
+  max-width: 220px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.manageCell {
+  min-width: 230px;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.editButton,
+.saveButton,
+.cancelButton,
+.deleteButton,
+.resetCodeButton {
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.editButton:hover,
+.saveButton:hover,
+.cancelButton:hover,
+.deleteButton:hover,
+.resetCodeButton:hover {
+  filter: brightness(0.95);
+}
+
+.editInput,
+.editSelect {
+  height: 36px;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #111827;
+  font-size: 14px;
+}
+
+.editInput {
+  width: 96px;
+  padding: 0 10px;
+}
+
+.editInput.small {
+  width: 70px;
+}
+
+.editSelect {
+  min-width: 112px;
+  padding: 0 10px;
+}
+
+.editInput:focus,
+.editSelect:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.editPurposeBox {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.purposeInput {
+  width: 130px;
+}
+
+.emptyTableCell {
+  height: 120px !important;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 800;
+  background: #ffffff;
+}
+
+/* 모바일에서는 표는 가로 스크롤 유지 */
+@media (max-width: 640px) {
+  .adminLogsTable {
+    min-width: 820px;
+  }
+
+  .adminLogsTable th,
+  .adminLogsTable td {
+    padding: 11px 12px;
+  }
+
+  .manageCell {
+    min-width: 210px;
+  }
+
+  .editButton,
+  .saveButton,
+  .cancelButton,
+  .deleteButton,
+  .resetCodeButton {
+    height: 32px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+}
+
+/* ==============================
+   Admin Insights Panel
+============================== */
+
+.adminInsightsPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.insightInfoBox {
+  margin: 0;
+}
+
+.insightInfoBox strong {
+  color: #111827;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.insightInfoBox p {
+  margin-top: 5px;
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.insightInfoBox button {
+  background: #111827;
+}
+
+.insightInfoBox button:hover {
+  background: #1f2937;
+}
+
+.insightLimitSetting {
+  margin: 0;
+}
+
+.insightLimitSetting label {
+  gap: 7px;
+}
+
+.insightLimitSetting label span {
+  color: #374151;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.insightLimitSetting input {
+  width: 140px;
+}
+
+.insightLimitSetting button {
+  background: #2563eb;
+}
+
+.insightLimitSetting button:hover {
+  background: #1d4ed8;
+}
+
+.insightGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.insightPanelBox {
+  margin: 0;
+  min-height: 210px;
+  padding: 18px;
+}
+
+.insightPanelBox > strong,
+.insightWarningBox > strong,
+.insightLimitBox > strong {
+  display: block;
+  margin-bottom: 14px;
+  color: #111827;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.rankingList {
+  padding-left: 0;
+  list-style: none;
+}
+
+.rankingList li {
+  min-height: 42px;
+  padding: 10px 0;
+  align-items: center;
+}
+
+.rankingStudentButton {
+  color: #111827;
+  font-weight: 900;
+}
+
+.rankingStudentButton:hover {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.classUsageList {
+  gap: 12px;
+}
+
+.classUsageItem {
+  grid-template-columns: 52px 1fr 72px;
+}
+
+.purposeUsageItem {
+  grid-template-columns: 76px 1fr 72px;
+}
+
+.classUsageItem span {
+  color: #374151;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.classUsageItem strong {
+  color: #111827;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.classUsageBarWrap {
+  height: 11px;
+  background: #eef2f7;
+}
+
+.classUsageBar {
+  background: #2563eb;
+}
+
+.monthlyLineChart {
+  margin-top: 4px;
+}
+
+.insightWarningBox {
+  margin: 0;
+  padding: 18px;
+}
+
+.warningList {
+  gap: 9px;
+}
+
+.warningItem {
+  min-height: 46px;
+  align-items: center;
+  border: 1px solid #fde68a;
+  background: #fef3c7;
+}
+
+.warningItem span {
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.warningItem strong {
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.warningItem:hover {
+  background: #fde68a;
+  filter: none;
+}
+
+.insightLimitBox {
+  margin: 0;
+  padding: 18px;
+  border: 1px solid #fecaca;
+  border-radius: 16px;
+  background: #fef2f2;
+}
+
+.limitList {
+  gap: 8px;
+}
+
+.limitItem {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #fee2e2;
+  color: #991b1b;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.limitItem:hover {
+  background: #fecaca;
+  filter: none;
+}
+
+.insightEmptyLimitBox {
+  margin: 0;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: #f9fafb;
+  color: #4b5563;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.emptyPanelText {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* 태블릿 */
+@media (max-width: 900px) {
+  .insightGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .insightPanelBox {
+    min-height: auto;
+  }
+
+  .insightInfoBox {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .insightInfoBox button {
+    width: 100%;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 560px) {
+  .insightLimitSetting {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .insightLimitSetting input {
+    width: 100%;
+  }
+
+  .insightLimitSetting button {
+    width: 100%;
+  }
+
+  .classUsageItem,
+  .purposeUsageItem {
+    grid-template-columns: 68px 1fr;
+    gap: 8px;
+  }
+
+  .classUsageItem strong,
+  .purposeUsageItem strong {
+    grid-column: 2;
+    text-align: left;
+  }
+
+  .warningItem {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .limitList {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .limitItem {
+    width: 100%;
+    text-align: left;
+  }
+}
+
+/* ==============================
+   Monthly Usage Line Chart
+============================== */
+
+.monthlyLineChart {
+  width: 100%;
+  margin-top: 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 6px 0 2px;
+}
+
+.monthlyLineChart svg {
+  width: 100%;
+  min-width: 560px;
+  height: auto;
+  display: block;
+}
+
+.chartAxis {
+  stroke: #cbd5e1;
+  stroke-width: 1.2;
+}
+
+.chartLine {
+  stroke: #2563eb;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chartDot {
+  fill: #2563eb;
+  stroke: #ffffff;
+  stroke-width: 2.5;
+}
+
+.chartValueLabel {
+  fill: #111827;
+  font-size: 13px;
+  font-weight: 800;
+  text-anchor: middle;
+}
+
+.chartMonthLabel {
+  fill: #6b7280;
+  font-size: 12px;
+  font-weight: 800;
+  text-anchor: middle;
+}
+
+.chartMaxLabel {
+  fill: #6b7280;
+  font-size: 12px;
+  font-weight: 800;
+  text-anchor: end;
+}
+
+.chartEmptyText {
+  margin: 0;
+  padding: 16px;
+  border: 1px dashed #d1d5db;
+  border-radius: 14px;
+  background: #f9fafb;
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 800;
+  text-align: center;
+}
+
+/* 모바일 */
+@media (max-width: 560px) {
+  .monthlyLineChart {
+    padding-bottom: 4px;
+  }
+
+  .monthlyLineChart svg {
+    min-width: 520px;
+  }
+
+  .chartValueLabel {
+    font-size: 12px;
+  }
+
+  .chartMonthLabel,
+  .chartMaxLabel {
+    font-size: 11px;
+  }
+}
+
+/* ==============================
+   Admin Student Panel
+============================== */
+
+.adminStudentPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.studentControls {
+  margin: 0;
+  padding: 16px;
+  display: grid;
+  grid-template-columns:
+    minmax(150px, 0.9fr)
+    minmax(180px, 1.2fr)
+    minmax(170px, 1fr)
+    auto;
+  gap: 12px;
+  align-items: end;
+}
+
+.studentControls label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.studentControls label span {
+  color: #374151;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.studentControls input,
+.studentControls select {
+  width: 100%;
+  height: 46px;
+}
+
+.studentControlActions {
+  display: flex;
+  gap: 8px;
+  align-items: end;
+}
+
+.studentControlActions button {
+  height: 46px;
+  padding: 0 15px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.searchButton {
+  background: #111827;
+  color: #ffffff;
+}
+
+.searchButton:hover {
+  background: #1f2937;
+}
+
+.studentClassTabs {
+  margin: 0;
+}
+
+.studentClassTabs button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.studentClassTabs button strong {
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.studentClassTabs button.active strong {
+  color: #ffffff;
+}
+
+.studentTableWrap {
+  margin-top: 0;
+}
+
+.studentManageTable {
+  min-width: 720px;
+}
+
+.studentManageTable th {
+  height: 48px;
+  background: #f8fafc;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.studentManageTable td {
+  height: 54px;
+  vertical-align: middle;
+}
+
+.studentLinkButton {
+  color: #111827;
+  font-weight: 900;
+}
+
+.studentLinkButton:hover {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 11px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.statusBadge.active {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.statusBadge.inactive {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.emptyActionText {
+  color: #9ca3af;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.adminPanelMessage.error {
+  border-color: #fecaca;
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+/* 태블릿 */
+@media (max-width: 1000px) {
+  .studentControls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .studentControlActions {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 640px) {
+  .studentControls {
+    grid-template-columns: 1fr;
+    padding: 13px;
+  }
+
+  .studentControlActions {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .studentControlActions button {
+    width: 100%;
+  }
+
+  .studentClassTabs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .studentClassTabs button {
+    justify-content: center;
+  }
+
+  .studentManageTable {
+    min-width: 680px;
+  }
+}
+
+@media (max-width: 420px) {
+  .studentClassTabs {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==============================
+   Admin Tabs
+============================== */
+
+.adminTabs {
+  margin: 0 0 18px;
+  padding: 6px;
+  display: inline-flex;
+  gap: 5px;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  background: #f9fafb;
+}
+
+.adminTabButton {
+  height: 40px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.adminTabButton:hover {
+  color: #111827;
+  background: #ffffff;
+}
+
+.adminTabButton.active {
+  background: #111827;
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(17, 24, 39, 0.16);
+}
+
+.adminTabButton.active:hover {
+  color: #ffffff;
+  background: #111827;
+}
+
+/* 모바일 */
+@media (max-width: 900px) {
+  .adminTabs {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-radius: 16px;
+  }
+
+  .adminTabButton {
+    width: 100%;
+    padding: 0 8px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 560px) {
+  .adminTabs {
+    grid-template-columns: 1fr;
+    border-radius: 14px;
+  }
+
+  .adminTabButton {
+    justify-content: center;
+  }
+}
+
+/* ==============================
+   Admin Top Bar
+============================== */
+
+.adminTopBar {
+  width: min(1320px, 100%);
+  margin: 0 auto 12px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+}
+
+.adminAccountInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  color: #4b5563;
+  font-size: 13px;
+}
+
+.adminAccountLabel {
+  padding: 5px 9px;
+  border: 1px solid #dbeafe;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.adminAccountInfo strong {
+  max-width: 360px;
+  overflow: hidden;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.logoutButton {
+  height: 36px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 999px;
+  background: #dc2626;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.logoutButton:hover {
+  background: #b91c1c;
+}
+
+/* 모바일 */
+@media (max-width: 560px) {
+  .adminTopBar {
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .adminAccountInfo {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .adminAccountInfo strong {
+    max-width: 220px;
+  }
+
+  .logoutButton {
+    width: auto;
+  }
+}
